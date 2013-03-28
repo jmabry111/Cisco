@@ -1,29 +1,34 @@
 MODULE 1 LESSON 1
 =================
 Catalyst Switches
+-----------------
 	Low end switches
 	Lots of similarities to higher end switches
 	
 Physical components
+-------------------
 	RJ-45
 	NIC
 	
 	
 	
-show ip interface brief - overview of ports
+> show ip interface brief - overview of ports
 
-Fa - Fast Ethernet
-Gi - Gigabit Ethernet
-Te - 10Gig Ethernet
+>Fa - Fast Ethernet
+>Gi - Gigabit Ethernet
+>Te - 10Gig Ethernet
 
 Rollover cable = Console Cable 
+------------------------------
 	really serial on both ends, just has RJ-45 on router end
 	
 VPN
+---
 	IPsec
 	SSL or Web VPN - basically uses https technology
 	
 Network user applications
+-------------------------
 	Email
 	Web browsing
 	IM
@@ -34,34 +39,37 @@ Network user applications
 	Online Gaming
 	
 Impact of user applications on network
-	Batch Applications
-		FTP, TFTP, inventory updates
-		No direct human interaction
-		Bandwidth is important, but not critical
+--------------------------------------
+###	Batch Applications
+*		FTP, TFTP, inventory updates
+*		No direct human interaction
+*		Bandwidth is important, but not critical
 		
-	Interactive Applications
-		Inventory inquiries, database updates
-		Human to machine interaction
-		B/c human is waiting for a response, response time is important, but not critical, unless wait is too long
+###	Interactive Applications
+*		Inventory inquiries, database updates
+*		Human to machine interaction
+*		B/c human is waiting for a response, response time is important, but not critical, unless wait is too long
 	
-	Real-time Applications
-		VoIP, video
-		human to human interaction
-		Gaming
-		end to end latency is critical
+###	Real-time Applications
+*		VoIP, video
+*		human to human interaction
+*		Gaming
+*		end to end latency is critical
 		
 Characteristics of network
-	Speed			measure of how fast data is transmitted - bps
-	Cost			indicates general cost of network components
-	Security		indicates how easily or difficult the network is to access as well as the data that is transmitted. 
-	Availability 	measure of the probability that the network will be available for use when it is required
+--------------------------
+*	Speed			measure of how fast data is transmitted - bps
+*	Cost			indicates general cost of network components
+*	Security		indicates how easily or difficult the network is to access as well as the data that is transmitted. 
+*	Availability 	measure of the probability that the network will be available for use when it is required
 					Calculated by dividing the uptime by total time in a year times 100
-	Scalability		how well the network can expand and accomodate more uses and data transfer requirements
-	Reliability		dependability of the network components, measured as probability of failure or mean time between failures (MTBF)
-	Topology 		Physical - arrangement of the cables, network devices, and end systems
+*	Scalability		how well the network can expand and accomodate more uses and data transfer requirements
+*	Reliability		dependability of the network components, measured as probability of failure or mean time between failures (MTBF)
+*	Topology 		Physical - arrangement of the cables, network devices, and end systems
 					Logical - the path that the data signals take through the physical topology
 					
 Physical Topologies
+-------------------
 	Bus		All devices receive all signals
 	
 	Ring	Signals travel around a ring
@@ -80,12 +88,14 @@ Physical Topologies
 	
 	
 Connections to internet
-	Wireless
-	Fiber
-	Copper
+-----------------------
+*	Wireless
+*	Fiber
+*	Copper
 	
 
 MODULE 1 LESSON 2
+=================
 
 Security - always keep in mind no matter what you are doing on network
 
