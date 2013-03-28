@@ -147,7 +147,7 @@ MODULE 1 LESSON 3
 Host-to-Host communications model
 ----------------------------------
 
-#Try to adhere to Standardized model as much as possible
+###Try to adhere to Standardized model as much as possible
 
 #OSI Model
 7.	Application
@@ -158,11 +158,11 @@ Host-to-Host communications model
 2.	Data Link
 1.	Physical
 
-#All People Seem To Need Data Processing
-#Please Do Not Throw Sausage Pizza Away
+###All People Seem To Need Data Processing
+###Please Do Not Throw Sausage Pizza Away
 
 
-#Why layered network?
+###Why layered network?
 *	Reduces complexity
 *	Standardizes interfaces
 *	Facilitates modular engineering
