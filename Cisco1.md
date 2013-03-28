@@ -18,8 +18,7 @@ Physical components
 >Gi - Gigabit Ethernet
 >Te - 10Gig Ethernet
 
-Rollover cable = Console Cable 
-------------------------------
+###Rollover cable = Console Cable 
 	really serial on both ends, just has RJ-45 on router end
 	
 VPN
@@ -97,12 +96,13 @@ Connections to internet
 MODULE 1 LESSON 2
 =================
 
-Security - always keep in mind no matter what you are doing on network
+###Security - always keep in mind no matter what you are doing on network
 
-Closed network - not connected to internet
-Open network - has connection to internet
+*Closed network - not connected to internet
+*Open network - has connection to internet
 
 Classes of attacks
+------------------
 	Passive		Traffic analysis, monitoring of unprotected communications, decrypting traffic, capturing authentication infomation
 	Active		Attempts to circumvent or break protection features, introduce malicious code, steal or modify information
 				Can result in disclosure of sensitive data, DoS, or modification of data
@@ -111,58 +111,61 @@ Classes of attacks
 	Distributed	Focus on malicious modification of hardware or software during distribution. Add a "back door" to the software or hardware.
 	
 Common threats
-	Physical:
+--------------
+###	Physical:
 		Hardware threats
 		Environmental threats
 		Electrical threats
 		Maintenance threats
-	Reconnaissance:
+###	Reconnaissance:
 		Learing information about target network by using available applications and information
-	Access:
+###	Access:
 		Used to retrieve data
 		Used to gain access
 		Used to Escalate access privileges
-	Password:
+###	Password:
 		Password crackers and guessers
 		
 Password Attack Threat Mitigation
-	No default passwords
-	Do not allow users to use same password on multiple systems
-	Disable accounts after certain # of incorrect attempts
-	Do not use cleartext passwords
-	Use strong - non-dictionary passwords
+---------------------------------
+*	No default passwords
+*	Do not allow users to use same password on multiple systems
+*	Disable accounts after certain # of incorrect attempts
+*	Do not use cleartext passwords
+*	Use strong - non-dictionary passwords
 	
-	sh run | include secret 
-	sh run | include password
-	login block-for 43200 attempts 10 within 90 - blocks all users for 1/2 day
+>	sh run | include secret 
+>	sh run | include password
+>	login block-for 43200 attempts 10 within 90 - blocks all users for 1/2 day
 	
 	tomas - enable secret cracker - brute force
 	tomas -cns <hash>
 	
 
 MODULE 1 LESSON 3
-
+==================
 Host-to-Host communications model
+----------------------------------
 
-Try to adhere to Standardized model as much as possible
+#Try to adhere to Standardized model as much as possible
 
-OSI Model
-7	Application
-6	Presentation
-5	Session
-4	Transport
-3	Network
-2	Data Link
-1	Physical
+#OSI Model
+7.	Application
+6.	Presentation
+5.	Session
+4.	Transport
+3.	Network
+2.	Data Link
+1.	Physical
 
-All People Seem To Need Data Processing
-Please Do Not Throw Sausage Pizza Away
+#All People Seem To Need Data Processing
+#Please Do Not Throw Sausage Pizza Away
 
 
-Why layered network?
-	Reduces complexity
-	Standardizes interfaces
-	Facilitates modular engineering
-	Ensures interoperable tehnology
-	Accelerates evolution
-	Simplifies teaching and learning
+#Why layered network?
+*	Reduces complexity
+*	Standardizes interfaces
+*	Facilitates modular engineering
+*	Ensures interoperable tehnology
+*	Accelerates evolution
+*	Simplifies teaching and learning
