@@ -1,5 +1,5 @@
 MODULE 1 LESSON 1
-
+=================
 Catalyst Switches
 	Low end switches
 	Lots of similarities to higher end switches
@@ -144,6 +144,10 @@ OSI Model
 3	Network
 2	Data Link
 1	Physical
+
+All People Seem To Need Data Processing
+Please Do Not Throw Sausage Pizza Away
+
 
 Why layered network?
 	Reduces complexity
