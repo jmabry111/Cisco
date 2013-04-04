@@ -249,6 +249,9 @@ Each layer takes the info from its layer's header and remove it and send it to t
 	*	Provides logical addressing and determines best path through network
 ###Network access
 	*	Controls the hardware devices and media that make up the network
+
+##TCP/IP OSI Comparison
+![Comparison](tcpip-osi-comparison.png)
 	
 ![Summary](1.63Summary.png)
 
