@@ -10,7 +10,7 @@ Physical components
 	RJ-45
 	NIC
 	
-	
+![Symbols](NetworkIcons.png)
 	
 > show ip interface brief - overview of ports
 
@@ -142,6 +142,8 @@ Password Attack Threat Mitigation
 	tomas -cns <hash>
 	
 
+![Threats](threats.png)
+
 MODULE 1 LESSON 3
 ==================
 Host-to-Host communications model
@@ -215,5 +217,41 @@ Layers
 	*	Provides network services to application processes (email, ftp, terminal emulation)
 	*	Provides authentication
 	*	API basically, developers' "hook" into the network stack
+	
+
+##Data Encapsulation
+
+Start with user data. As it travels down the layers (starting from 7), each layer wraps the data with its own information. 
+
+##De-Encapsulation
+
+Each layer takes the info from its layer's header and remove it and send it to the next layer.
+
+![Encapsulation Diagram](encapsulation.png)
+![Data-link Layer](data-link.png)
+![Network Layer](network.png)
+![Transport Layer](transport.png)
+
+##Peer to Peer Communication
+*	Physical Layer - Bits			Bacon		Birthdays
+*	Data link Layer - Frames		Frying		Fear
+*	Network Layer - Packets			Produces	People
+*	Transport Layer - Segments		Salivation	Some
+*	Session - Application Layers - Data
+
+## TCP/IP Stack
+###Application
+	*	Represents data users
+	*	Encodes & controls dialog
+###Transport
+	*	Supports communication between end devices across diverse network
+###Internet
+	*	Provides logical addressing and determines best path through network
+###Network access
+	*	Controls the hardware devices and media that make up the network
+	
+![Summary](1.63Summary.png)
+
+
 
 
