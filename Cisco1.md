@@ -1,3 +1,4 @@
+[List](index.html)
 MODULE 1 LESSON 1
 =================
 Catalyst Switches
@@ -18,7 +19,7 @@ Physical components
 >Gi - Gigabit Ethernet
 >Te - 10Gig Ethernet
 
-###Rollover cable = Console Cable 
+### Rollover cable = Console Cable 
 	really serial on both ends, just has RJ-45 on router end
 	
 VPN
@@ -39,17 +40,17 @@ Network user applications
 	
 Impact of user applications on network
 --------------------------------------
-###	Batch Applications
+### 	Batch Applications
 *		FTP, TFTP, inventory updates
 *		No direct human interaction
 *		Bandwidth is important, but not critical
 		
-###	Interactive Applications
+### 	Interactive Applications
 *		Inventory inquiries, database updates
 *		Human to machine interaction
 *		B/c human is waiting for a response, response time is important, but not critical, unless wait is too long
 	
-###	Real-time Applications
+### 	Real-time Applications
 *		VoIP, video
 *		human to human interaction
 *		Gaming
@@ -96,7 +97,7 @@ Connections to internet
 MODULE 1 LESSON 2
 =================
 
-###Security - always keep in mind no matter what you are doing on network
+### Security - always keep in mind no matter what you are doing on network
 
 *Closed network - not connected to internet
 *Open network - has connection to internet
@@ -112,18 +113,18 @@ Classes of attacks
 	
 Common threats
 --------------
-###	Physical:
+### 	Physical:
 		Hardware threats
 		Environmental threats
 		Electrical threats
 		Maintenance threats
-###	Reconnaissance:
+### 	Reconnaissance:
 		Learing information about target network by using available applications and information
-###	Access:
+### 	Access:
 		Used to retrieve data
 		Used to gain access
 		Used to Escalate access privileges
-###	Password:
+### 	Password:
 		Password crackers and guessers
 		
 Password Attack Threat Mitigation
@@ -149,7 +150,7 @@ MODULE 1 LESSON 3
 Host-to-Host communications model
 ----------------------------------
 
-###Try to adhere to Standardized model as much as possible
+### Try to adhere to Standardized model as much as possible
 
 #OSI Model
 7.	Application
@@ -160,11 +161,11 @@ Host-to-Host communications model
 2.	Data Link
 1.	Physical
 
-###All People Seem To Need Data Processing
-###Please Do Not Throw Sausage Pizza Away
+### All People Seem To Need Data Processing
+### Please Do Not Throw Sausage Pizza Away
 
 
-###Why layered network?
+### Why layered network?
 *	Reduces complexity
 *	Standardizes interfaces
 *	Facilitates modular engineering
@@ -174,24 +175,24 @@ Host-to-Host communications model
 
 Layers
 ------
-###Physical:
+### Physical:
 *	Binary Transmission - defines electrical, mechanical, procedural, and functional specs for activating, maintaining, and deactivating the physical link
 						- Defines how we encode data for transmission
 ** 	Hubs, cables, terminators, jacks
 
-###Data Link:
+### Data Link:
 *	Access to Media 
 	*	defines how data is formatted for transmission and how access to network is controlled
 	*	Provides error detection
 	*	Describes HOW we transmit data
 	*	MAC Addresses, switches, 
 
-###Network:
+### Network:
 *	Data Delivery 
 	*	Routes data packets, Provides error detection, Provides logical addressing and path selection
 	*	Routers, routing enabled switches, IPv4/IPv6 addresses
 
-###Transport:
+### Transport:
 *	End-to-End Connections 
 	*	Handles transportation issues between hosts 
 	*	Ensures data transport reliability
@@ -199,12 +200,12 @@ Layers
 	*	Provides reliability through fault detection and recovery information flow control
 	*	UDP, TCP
 
-###Sessions:
+### Sessions:
 *	Interhost Communications 
 	*	Establishes, manages, and terminates sessions between applications
 	*	Allows multiple tabs for example
 							
-###Presentation:
+### Presentation:
 *	Data Representation 
 	*	Ensures that data is readable by receiving systems
 	*	Formats & Structures data
@@ -212,18 +213,18 @@ Layers
 	*	Provides encryption
 	*	method for encoding audio, video (format), text formatting, image format
 
-###Application
+### Application
 *	Network Processes to Applications 
 	*	Provides network services to application processes (email, ftp, terminal emulation)
 	*	Provides authentication
 	*	API basically, developers' "hook" into the network stack
 	
 
-##Data Encapsulation
+## Data Encapsulation
 
 Start with user data. As it travels down the layers (starting from 7), each layer wraps the data with its own information. 
 
-##De-Encapsulation
+## De-Encapsulation
 
 Each layer takes the info from its layer's header and remove it and send it to the next layer.
 
@@ -240,21 +241,23 @@ Each layer takes the info from its layer's header and remove it and send it to t
 *	Session - Application Layers - Data
 
 ## TCP/IP Stack
-###Application
+### Application
 	*	Represents data users
 	*	Encodes & controls dialog
-###Transport
+### Transport
 	*	Supports communication between end devices across diverse network
-###Internet
+### Internet
 	*	Provides logical addressing and determines best path through network
-###Network access
+### Network access
 	*	Controls the hardware devices and media that make up the network
 
-##TCP/IP OSI Comparison
+## TCP/IP OSI Comparison
 ![Comparison](tcpip-osi-comparison.png)
-	
+
+## Summary
 ![Summary](1.63Summary.png)
 
 
-
+MODULE 1 LESSON 4
+==================
 
