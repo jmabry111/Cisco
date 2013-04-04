@@ -169,3 +169,44 @@ Host-to-Host communications model
 *	Ensures interoperable tehnology
 *	Accelerates evolution
 *	Simplifies teaching and learning
+
+##Layers:
+###Physical:
+*	Binary Transmission - defines electrical, mechanical, procedural, and functional specs for activating, maintaining, and deactivating the physical link
+						- Defines how we encode data for transmission
+** 	Hubs, cables, terminators, jacks
+
+###Data Link:
+*	Access to Media - defines how data is formatted for transmission and how access to network is controlled
+					- Provides error detection
+					- Describes HOW we transmit data
+**	MAC Addresses, switches, 
+
+###Network:
+*	Data Delivery - Routes data packets, Provides error detection, Provides logical addressing and path selection
+**	Routers, routing enabled switches, IPv4/IPv6 addresses
+
+###Transport:
+*	End-to-End Connections - Handles transportation issues between hosts 
+						   - Ensures data transport reliability
+						   - Establishes, maintains, and terminates virtual circuits
+						   - Provides reliability through fault detection and recovery information flow control
+**	UDP, TCP
+
+###Sessions:
+*	Interhost Communications - Establishes, manages, and terminates sessions between applications
+							 - Allows multiple tabs for example
+							
+###Presentation:
+*	Data Representation - Ensures that data is readable by receiving systems
+						- Formats & Structures data
+						- Negotiates data transfer syntax for application layer
+						- Provides encryption
+** method for encoding audio, video (format), text formatting, image format
+
+###Application
+*	Network Processes to Applications - Provides network services to application processes (email, ftp, terminal emulation)
+									  - Provides authentication
+** API basically, developers' "hook" into the network stack
+
+
