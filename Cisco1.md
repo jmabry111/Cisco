@@ -259,5 +259,172 @@ Each layer takes the info from its layer's header and remove it and send it to t
 
 
 MODULE 1 LESSON 4
-==================
+=================
+
+## Internet Protocol Characteristics
+
+*	Operates at layer 3 (Network Layer)
+*	Connectionless protocol
+*	Packets treated independently
+*	Hierarchical addressing
+*	Best-effort theory
+*	No data-recovery features
+*	Media-independent
+
+# IP Addressing
+* Connectionless Protocol
+* 2 parts
+	* Network ID - identifies the network that a host belongs to, used by routers to maintain info about routes
+	* Host ID - identifies the individual host, assigned by organizations to individual devices
+* IP Protocol Data Unit Header
+	* ![IP PDU](ippdu.png)
+* 4 8-bit octets
+	* If 1st bit is 0, 1st octet has to be between 0 and 127
+		* 127 is loopback (01111111)
+	* 1st 2 bits are 10, 1st 2 octets have to be between 128-191
+	* 1st 3 bits are 110, 1st 3 octets have to be between 192-223
+	* 1st 4 bits are 1110, all octets are between 224-239
+		* Multicast communication
+	* ![1st Octet](1stoctet.png)
+
+## Public IP Ranges
+* Class A
+	* 1.0.0.0 to 9.255.255.255
+	* 11.0.0.0 to 126.255.255.255
+* Class B
+	* 128.0.0.0 to 172.15.255.255
+	* 172.32.0.0 to 191.255.255.255
+* Class C
+	* 192.0.0.0 to 192.167.255.255
+	* 192.169.0.0 to 223.255.255.255
+	
+## Private IP Ranges
+* Class A
+	* 10.0.0.0 to 10.255.255.255
+* Class B
+	* 172.16.0.0 to 172.31.255.255
+* Class C
+	* 192.168.0.0 to 192.168.255.255
+	
+### DHCP
+1. Broadcast/Discover
+2. Offer
+3. Request
+4. Acknowledgement
+
+### DNS
+*	TCP/IP Suite Application Layer Protocol
+
+
+MODULE 1 LESSON 5
+=================
+
+# Layer 4 - Transport layer
+*	Session multiplexing
+*	ID of different applications
+*	Segmentation
+*	Flow control (when required) - TCP only
+*	Connection-oriented (when required) - TCP only
+*	Reliability (when required) -TCP only
+
+## TCP vs UDP
+*	TCP is connection-oriented, UDP is Connectionless
+*	TCP is reliable, UDP not
+*	TCP uses sequencing, UDP does not
+*	TCP uses:
+	*	Email
+	*	File Sharing
+	*	Downloading
+*	UDP uses:
+	*	Audio/Video streaming
+	*	TFTP
+	*	Time-sensitive applications
+	
+### UDP Header
+![UDP Header](udpheader.png)
+
+### TCP Header
+![TCP Header](tcpheader.png)
+
+# TCP/IP Application Layer Protocols
+*	File transfer
+	*	FTP
+	*	TFTP
+	*	NFS
+*	Email
+	*	SMTP
+*	Remote Login
+	*	Telnet
+	*	rlogin
+	*	ssh
+*	Network Management
+	*	SNMP
+*	Name Management
+	*	DNS
+	
+## Passing Network to Transport layer
+*	Protocol ID field functions as pointer to transport layer
+	*	TCP Protocol ID is 6
+	*	UDP Protocol ID is 17
+
+## Passing Transport to Application layer
+*	![Transport to Application](application-port-layer.png)
+*	[Common port numbers](http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
+
+## TCP Connection
+*	3-way handshake
+	1.	SYN (SEQ = 100 CTL = SYN)
+	2.	Syn, ACK (SEQ = 300 ACK = 101 CTL = SYN, ACK)
+	3.	ACK (SEQ = 101 ACK = 301 CTL = ACK)
+
+*	Flow Control
+	*	Client transmits
+	*	Receiver sends stop request if buffer is full
+	*	Client waits for Receiver to process data and send a resume signal
+	*	Client resumes transmission
+
+*	TCP Acknowledgement
+	*	Window size is how many segments are sent before receiving an ACK
+	*	TCP uses a sliding (or dynamic window)
+		*	![sliding window](slidingwindows.png)
+		*	![Sequence and Acknowledgement](tcpseqack.png)
+		
+
+MODULE 1 LESSON 6
+=================
+
+# Packet Delivery Process
+
+## 1.	Layer 1 Devices
+*	Ethernet
+*	Serial
+*	Repeaters/Hubs
+*	Physical Inteface of NIC
+
+## 2.	Layer 2 Devices
+*	NIC
+*	Bridge
+*	Switch
+
+###	Layer 2 Addressing
+	*	Transporting frame across media
+	*	MAC Address
+	*	Assigned end-to-end devices
+
+## 3.	Layer 3 Devices and their function
+*	Network layer provides connectivity and path selection between 2 hosts
+*	In the host, this is the pat between the data-link layer and the upper layers
+*	In the router, it is the actual path across the network.
+
+###	Layer 3 Addressing
+	*	Must include identifiers that enable intermediary network devices to locate hosts on different networks
+	*	Each protocol stack has its own Layer3 format
+		*	OSI uses NSAP
+		*	TCP/IP uses IP
+
+# ARP
+
+	 
+
+
 
