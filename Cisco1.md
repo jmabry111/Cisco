@@ -407,9 +407,9 @@ MODULE 1 LESSON 6
 *	Switch
 
 ###	Layer 2 Addressing
-	*	Transporting frame across media
-	*	MAC Address
-	*	Assigned end-to-end devices
+*	Transporting frame across media
+*	MAC Address
+*	Assigned end-to-end devices
 
 ## 3.	Layer 3 Devices and their function
 *	Network layer provides connectivity and path selection between 2 hosts
@@ -417,14 +417,20 @@ MODULE 1 LESSON 6
 *	In the router, it is the actual path across the network.
 
 ###	Layer 3 Addressing
-	*	Must include identifiers that enable intermediary network devices to locate hosts on different networks
-	*	Each protocol stack has its own Layer3 format
-		*	OSI uses NSAP
-		*	TCP/IP uses IP
+*	Must include identifiers that enable intermediary network devices to locate hosts on different networks
+*	Each protocol stack has its own Layer3 format
+	*	OSI uses NSAP
+	*	TCP/IP uses IP
 
-# ARP
-
+# ARP - Address Resolution Protocol
+*	2 basic functions
+		1.	Resolving IP Addresses to MAC Addresses
+		2. 	Maintains a cache of mappings
+*	ARP is not routable.. only works on LAN
+	
+### ARP Table
+*	Keeps a record of recent bindings of IP Addresses to MAC Addresses
 	 
-
+Lesson 6 page 11 - arp
 
 
