@@ -1,4 +1,4 @@
-[List](index.html) | [Module 2](Cisco2.md)
+[List](index.html) | [Cisco LAN Switching](Cisco2.md)
 MODULE 1 LESSON 1
 =================
 Catalyst Switches
@@ -11,7 +11,7 @@ Physical components
 	RJ-45
 	NIC
 	
-![Symbols](NetworkIcons.png)
+![Symbols](images/NetworkIcons.png)
 	
 > show ip interface brief - overview of ports
 
@@ -143,7 +143,7 @@ Password Attack Threat Mitigation
 	tomas -cns <hash>
 	
 
-![Threats](threats.png)
+![Threats](images/threats.png)
 
 MODULE 1 LESSON 3
 ==================
@@ -228,10 +228,10 @@ Start with user data. As it travels down the layers (starting from 7), each laye
 
 Each layer takes the info from its layer's header and remove it and send it to the next layer.
 
-![Encapsulation Diagram](encapsulation.png)
-![Data-link Layer](data-link.png)
-![Network Layer](network.png)
-![Transport Layer](transport.png)
+![Encapsulation Diagram](images/encapsulation.png)
+![Data-link Layer](images/data-link.png)
+![Network Layer](images/network.png)
+![Transport Layer](images/transport.png)
 
 ##Peer to Peer Communication
 *	Physical Layer - Bits			Bacon		Birthdays
@@ -252,10 +252,10 @@ Each layer takes the info from its layer's header and remove it and send it to t
 	*	Controls the hardware devices and media that make up the network
 
 ## TCP/IP OSI Comparison
-![Comparison](tcpip-osi-comparison.png)
+![Comparison](images/tcpip-osi-comparison.png)
 
 ## Summary
-![Summary](1.63Summary.png)
+![Summary](images/1.63Summary.png)
 
 
 MODULE 1 LESSON 4
@@ -277,7 +277,7 @@ MODULE 1 LESSON 4
 	* Network ID - identifies the network that a host belongs to, used by routers to maintain info about routes
 	* Host ID - identifies the individual host, assigned by organizations to individual devices
 * IP Protocol Data Unit Header
-	* ![IP PDU](ippdu.png)
+	* ![IP PDU](images/ippdu.png)
 * 4 8-bit octets
 	* If 1st bit is 0, 1st octet has to be between 0 and 127
 		* 127 is loopback (01111111)
@@ -285,7 +285,7 @@ MODULE 1 LESSON 4
 	* 1st 3 bits are 110, 1st 3 octets have to be between 192-223
 	* 1st 4 bits are 1110, all octets are between 224-239
 		* Multicast communication
-	* ![1st Octet](1stoctet.png)
+	* ![1st Octet](images/1stoctet.png)
 
 ## Public IP Ranges
 * Class A
@@ -341,10 +341,10 @@ MODULE 1 LESSON 5
 	*	Time-sensitive applications
 	
 ### UDP Header
-![UDP Header](udpheader.png)
+![UDP Header](images/udpheader.png)
 
 ### TCP Header
-![TCP Header](tcpheader.png)
+![TCP Header](images/tcpheader.png)
 
 # TCP/IP Application Layer Protocols
 *	File transfer
@@ -368,7 +368,7 @@ MODULE 1 LESSON 5
 	*	UDP Protocol ID is 17
 
 ## Passing Transport to Application layer
-*	![Transport to Application](application-port-layer.png)
+*	![Transport to Application](images/application-port-layer.png)
 *	[Common port numbers](http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
 
 ## TCP Connection
@@ -386,8 +386,8 @@ MODULE 1 LESSON 5
 *	TCP Acknowledgement
 	*	Window size is how many segments are sent before receiving an ACK
 	*	TCP uses a sliding (or dynamic window)
-		*	![sliding window](slidingwindows.png)
-		*	![Sequence and Acknowledgement](tcpseqack.png)
+		*	![sliding window](images/slidingwindows.png)
+		*	![Sequence and Acknowledgement](images/tcpseqack.png)
 		
 
 MODULE 1 LESSON 6
@@ -513,7 +513,7 @@ MODULE 1 LESSON 7
 	
 SOHO - Small Office or Home Office
 
-![Ethernet Evolution](ethernetHistory.png)
+![Ethernet Evolution](images/ethernetHistory.png)
 
 ## LAN Standards
 
@@ -560,7 +560,7 @@ MODULE 1 LESSON 8
 
 # Connecting to an Ethernet LAN
 
-![Ethernet Media Requirements](ethernetrequirements.png)
+![Ethernet Media Requirements](images/ethernetrequirements.png)
 
 ### GBIC - Gigabit Interface Converter
 	Normal or SFP (Small Form-Factor Pluggable)
@@ -568,7 +568,7 @@ MODULE 1 LESSON 8
 ### UTP - Unshielded Twisted Pair
 
 *	100 Meter length max
-*	![UTP Cable](utp.png)
+*	![UTP Cable](images/utp.png)
 
 ### STP - Shielded Twisted Pair
 
@@ -587,10 +587,10 @@ MODULE 1 LESSON 8
 ### RJ - Registered Jack
 
 **Straight-Through Cable**
-![Normal UTP Cable](stutp.png)
+![Normal UTP Cable](images/stutp.png)
 
 **Crossover Cable**
-![Crossover UTP Cable](crossover.png)
+![Crossover UTP Cable](images/crossover.png)
 
 ### When to use...
 
