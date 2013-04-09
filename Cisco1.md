@@ -1,4 +1,4 @@
-[List](index.html)
+[List](index.html) | [Module 2](Cisco2.md)
 MODULE 1 LESSON 1
 =================
 Catalyst Switches
@@ -431,6 +431,187 @@ MODULE 1 LESSON 6
 ### ARP Table
 *	Keeps a record of recent bindings of IP Addresses to MAC Addresses
 	 
-Lesson 6 page 11 - arp
+# Host to Host Packet Delivery
+
+S = Source - Layer 3: 192.168.3.1, Layer 2: 0800:0222:2222
+D = Destination - Layer 3: 192.168.3.2, Layer 2: 0800:0222:1111
+
+### Initial Phase
+
+	1.	S-Application:		Network, can you set up a reliable connection to 192.168.3.2 for me?
+	2.	S-Transport:		I'll use TCP
+	3.	S-Transport:		Hey IP! Set up a session to 192.168.3.2
+	4.	S-TCP:				Hey IP! Send this TCP SYN to 192.168.3.2
+
+### ARP Request
+
+	5.	S-IP:			Hey Layer 2! send this packet to 192.168.3.2
+	6.	S-Layer 2:		ARP, do you have a mapping for 192.168.3.2
+	7.	S-ARP:			Is 3.2 in ARP Table? No, Layer 2 will have to put the packet in the parking lot until I do an ARP
+	8.	S-ARP:			ARP Request - I am 192.168.3.1, my MAC Address is 0800:0222:2222. Are you 192.168.3.2?
+	9. 	S-ARP:			Layer 2, Send this using our MAC as the SRC MAC and a broadcast as the DST MAC.
+	10.	S-Layer 2:		It is sent.
+	11.	D-Layer 2:		I just got a frame w/ broadcast MAC so I'll process it. the protocol ID says that it belongs to ARP. Let me strip the Layer 2 header and send it to ARP
+	12.	D-Layer 2:		ARP, here is something for you.
+	13.	D-ARP:			I just got an ARP request from 192.168.3.1. Let me add its IP and MAC address to my ARP Table, now i can respond.
+
+### ARP Response
+
+	14.	D-ARP:		The ARP reply will say that I am 192.168.3.2 with a MAC Address of 0800:0222:1111
+	15.	D-ARP:		Layer 2, send this using our MAC Address as SRC MAC and 0800:0222:2222 as the DST MAC.
+	16.	D-Layer 2:	It is sent.
+	17.	S-Layer 2:	I just got a frame w/ my MAC so I'll process it. The protocol ID says that it belongs to ARP. Let me strip the Layer 2 header and send it to ARP
+	18.	S-Layer 2:	ARP, here is something for you.
+	19.	S-ARP:		I just got an ARP reply from 192.168.3.2. Let me add its IP and MAC to my ARP table.
+	20.	S-ARP:		Layer 2, I have 192.168.3.2 mapped to 0800:0222:1111
+
+### TCP 3-way Handshake
+
+	21.	S-Layer 2:	I can send out the pending frame
+	22.	D-Layer 2:	I need to send a SYN ACK to the TCP SYN that I received
+	23.	D-TCP:		Send this.
+	24.	S-TCP:		Got the SYN ACK
+	25.	S-TCP:		I neeed to let the other end know I got the SYN ACK to cmplete the session establishment
+
+### Sending Data
+
+	26.	S-TCP:			Ok, Application, I have your session set up.
+	27.	S-Application:	OK, I'll send you some data.
+	28.	S-Application:	Here is the data.
+	29.	D-TCP:			Application, here is some data.
+	30.	D-Application:	I need to send an ACK to the data that I received.
+
+
+## Default Gateway
+
+*	If the destination doesnt have the ARP request MAC on the same LAN, it sends the MAC up to the gateway to forward to the next LAN
+
+
+ 
+MODULE 1 LESSON 7
+=================
+
+# Ethernet
+
+### LAN Components
+
+*	Computers
+	*	PCs
+	*	Servers
+*	Interconnections
+	*	NICs
+	*	Media
+*	Network devices
+	*	Hubs
+	*	Switches
+	*	Routers
+*	Protocols
+	*	Ethernet
+	*	IP
+	*	ARP
+	*	DHCP
+	
+SOHO - Small Office or Home Office
+
+![Ethernet Evolution](ethernetHistory.png)
+
+## LAN Standards
+
+LLC Sublayer - Indicates the upper-layer protocols (IPv4, IPv6)
+MAC Sublayer - Duplexing, MAC Addressing
+IEEE 802.2 - Indicates the upper-layer protocols (IPv4, IPv6)
+
+*	IEEE 802.3	- 	Type field is replaced by Length, and an 802.2 LLC header follows the 802.3 header
+*	IEEE 802.3u	- 	100Mbps w/ autonegotiation
+*	IEEE 802.3z	- 	Fiber at 1Gbps
+*	IEEE 802.3ab- 	Twisted Pair at 1Gbps
+*	IEEE 802.3ae- 	Fiber at 10Gps
+
+## Ethernet Frame Structure
+
+1. **Preamble:**			There is data to follow										7 bytes
+2. **SOF:**					Start of Frame												1 byte
+3. **Destination Address:**	Destination MAC Address										48 bits - 6 bytes
+4. **Source Address:**		Source MAC Address											48 bits - 6 bytes
+5. **Length:**				Size of frame												2 bytes
+6. **802.2 Header & Data:**	LLC indication of the upper-layer protocols (IPv4, IPv6)	46-1500 bytes
+7. **FCS:**					Frame Check Sequence										4 bytes
+
+### Communications
+
+*	Unicast - 1 to 1 communication when MAC address are known
+	*	Telnet, FTP, HTTP, SNMP, SMTP, SSH, ARP Reply, DHCP Offer
+*	Broadcast - Uses destination MAC address of FF-FF-FF-FF-FF-FF
+	*	DHCP Discover, ARP Request, RIPv1
+* 	Multicast - Uses special multicast MAC Address that members of a group listen on
+	*	CDP, RIPv2, OSPF, EIGRP, VTP
+	
+## MAC Address compenents
+
+1.	**Broadcast** - 1 Bit
+2.	**Local** - 1 Bit
+3.	**OUI** - 22 Bits
+4. 	**Vendor Assigned** - 24 Bits
+
+
+
+MODULE 1 LESSON 8
+=================
+
+# Connecting to an Ethernet LAN
+
+![Ethernet Media Requirements](ethernetrequirements.png)
+
+### GBIC - Gigabit Interface Converter
+	Normal or SFP (Small Form-Factor Pluggable)
+	
+### UTP - Unshielded Twisted Pair
+
+*	100 Meter length max
+*	![UTP Cable](utp.png)
+
+### STP - Shielded Twisted Pair
+
+*	Provides metal mesh in outside insulation
+*	Provides electrical interference resistance
+
+### Optical-Fiber
+
+*	Silica based glass
+*	Single Mode & Multi Mode varieties
+*	High speed & throughput
+*	Low Cost
+*	Small connector
+*	Max length is longer than UTP or STP
+
+### RJ - Registered Jack
+
+**Straight-Through Cable**
+![Normal UTP Cable](stutp.png)
+
+**Crossover Cable**
+![Crossover UTP Cable](crossover.png)
+
+### When to use...
+
+*	When connecting "like-devices" together, use crossover
+*	When connecting dissimilar devices together, use straight-through
+*	Routers, PCs, servers, workstations, are all like devices b/c they function as spokes in the Ethernet hub-and-spoke topology
+*	Switches and hubs are different type of "like-devices" b/c they function as hubs in Ethernet hub-and-spoke topology
+*	Crossover
+	*	hub-hub
+	*	hub-switch
+	*	switch-switch
+	*	router-router
+	*	PC-router
+	*	PC-PC
+*	Straight-Through
+	*	router-switch
+	*	PC-switch
+	*	server-switch
+	*	pc-hub
+	*	server-hub
+	
+
 
 
