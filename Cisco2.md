@@ -105,6 +105,93 @@ MODULE 2 LESSON 2
 MODULE 2 LESSON 3
 =================
 
+# Packet Delivery
 
+### Layer 2 Addressing (revisited)
+
+*	Ethernet uses MAC Addresses
+*	IDs end devices in LAN
+*	Enables packet to be carried by media across each segment
+
+###	Layer 3 Addressing 
+
+*	Each protocol stack has its own network address format
+	*	OSI uses NSAP
+	*	TCP/IP uses IP
+*	Enables ID of hosts in different networks
+*	Enables packet to be forwarded to its destination
+
+## Summary
+
+*	A host-to-host data communication in a LAN that is using a switch utilizes protocols from every layer of the TCP/IP protocol suite
+	*	If the MAC Address is unknown, ARP is used to map Layer 2 to Layer 3 (MAC to IP)
+	*	Switches learn the MAC Addressing to port mapping by monitoring the source MAC addresses of frames
+	*	When a switch forwards a frame, it does not change the source or destination Layer 2 addresses
+
+
+MODULE 2 LESSON 4
+=================
+
+# Operating Cisco IOS Software
+
+**IOS = Internetwork Operating System**
+
+## Configuring Network Devices
+
+*	Initial default settings are sufficient for switch to operate as Layer 2 switch
+*	A Cisco device will prompt for initial config if there is no config in memory
+*	Additional config tasks set up the device with:
+	*	Protocol addressing and parameter settings
+	*	Options for administration and management
+	
+### Cisco Device Startup
+
+1.	Find and check device hardware
+2. 	Find and load Cisco IOS Software image
+3.	Find and apply device configurations
+
+### Configuration sources
+
+*	Console - rollover cable
+*	AUX Port - disabled by default
+	*	Can be used to connect a modem for "dial in" management connectivity
+*	Telnet/SSH
+*	TFTP
+*	Web Interface or Network Management Server(SNMP)
+
+## Cisco Interface Functions
+
+*	CLI is used to enter commands
+*	Operations vary on different devices
+*	Users type or paste entries in console command modes
+*	Command modes have distinct prompts - >, #
+*	The Enter key instructs the device to parse and execute the command
+*	2 primary EXEC modes are user mode and privileged mode
+
+### EXEC Modes
+
+1.	User Mode
+	*	First prompt when log in
+	*	privilege level of 1
+	*	very limited examination of switch or router
+	*	command prompt = hostname>
+	
+2.	Privileged (Enabled) Mode
+	*	privilege level of 15
+	*	enables configuration and debugging
+	*	Detailed examination
+	*	command prompt = hostname#
+	
+**Banners**
+
+*	LINE            c banner-text c, where 'c' is a delimiting character
+*	exec            Set EXEC process creation banner
+*	incoming        Set incoming terminal line banner
+*	login           Set login banner
+*	motd            Set Message of the Day banner
+*	prompt-timeout  Set Message for login authentication timeout
+*	slip-ppp        Set Message for SLIP/PPP
+
+![Shortcut Keys](images/hotkeys.png)
 
 

@@ -13,4 +13,7 @@
 
 
 >	debug ipv6 packet - shows more info when you run another command such as ping
-	
+
+> banner motd # Whatever you want to say #
+
+motd = message of the day
