@@ -195,3 +195,88 @@ MODULE 2 LESSON 4
 ![Shortcut Keys](images/hotkeys.png)
 
 
+MODULE 2 LESSON 5
+=================
+
+# Startup of Catalyst Switch
+
+## LED Indicators
+
+*	System LED
+	* Failed POST - Amber Light
+*	Redundant Power Supply LED
+*	Port Status LEDs
+*	Port Mode LEDs
+*	Mode Button
+
+### Initial Bootup
+
+Gives you the MAC Address, then loads binary startup config from flash memory
+
+	erase startup-config #erases all configuration
+
+Answer no to initial configuration dialog and you get to a Switch> User-Mode Prompt
+
+**Global Config Mode** - configure terminal
+
+	Switch(config)#
+
+**Interface Config Mode** - interface gi0/1
+
+	Switch(config-if)#
+
+
+	Switch>enable
+	Switch#conf t
+	Switch(config)#int fa 0/1
+	Switch(config-if)#description Link to other end
+	Switch(config-if)#do show interface status | include Fa0/1
+	Fa0/1	Link to other end	notconnect	1	auto	auto	10/100BaseTX
+	Switch(config-if)#exit
+	Switch(config)#interface range fa 0/1-8
+	Switch(config-if-range)#speed auto
+	Switch(config-if-range)#exit
+	Switch(config)#interface range fa 0/1-8 , fa0/10-12
+	Switch(config-if-range)#
+
+### To enable IP Connectivity
+
+1.	Set hostname (make it descriptive - location, number, etc)
+2.	Set IP Address
+	*	Switch#conf t
+	*	Switch(config)#interface vlan 1
+	*	Switch(config-if)#ip address {ip address} {mask}
+	*	Switch(config-if)#no shutdown
+3.	Configure gateway
+	*	Switch(config)#ip default-gateway {router address}
+4.	Enable remote access (Telnet, ssh)
+	*	Switch(config)#line vty 0 4 #vty 0 4 is telnet
+	*	Switch(config-line)#password {password}
+5.	**Copy current configuration to NVRAM**
+	*	copy running-config startup-config (copy run start)
+
+### Some Basic show commands
+
+	show version - OS, system hardware, config and boot files
+	show running-config - shows current active configuration
+	show interfaces - shows statistics for all interfaces
+	show interface brief, show interface status
+
+*	show interface fa0/2 - gives layer 1 and layer 2 info
+	*	important info:
+	
+		FastEthernet0/2 is up, line protocol is up (connected)
+			Hardware is Fast Ethernet, address is {mac address}
+			Full-duplex, 100Mb/s
+			0 CRC
+			0 collisions
+			
+### MAC Address Table
+
+*	show mac-address-table dynamic - shows only the dynamic(learned) mac addresses
+*	clear mac-address-table - will not use often
+
+
+
+
+
