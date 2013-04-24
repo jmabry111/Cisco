@@ -1,4 +1,4 @@
-[Networking Fundamentals and Concepts](Cisco1.md) | [List](index.html) | [Module 3](Cisco3.md)
+[Networking Fundamentals and Concepts](Cisco1.md) | [List](index.html) | [Switch Security, Tuning, Wireless LANs, and Router Fundamentlas](Cisco3.md)
 
 MODULE 2 LESSON 1
 =================
