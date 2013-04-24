@@ -1,4 +1,4 @@
-[Networking Fundamentals and Concepts](Cisco1.md) | [List](index.html) | [Switch Security, Tuning, Wireless LANs, and Router Fundamentlas](Cisco3.md)
+[Networking Fundamentals and Concepts](Cisco1.md) | [List](index.html) | [Wireless LANs, and Router Fundamentals](Cisco3.md)
 
 MODULE 2 LESSON 1
 =================
@@ -276,6 +276,223 @@ Answer no to initial configuration dialog and you get to a Switch> User-Mode Pro
 *	show mac-address-table dynamic - shows only the dynamic(learned) mac addresses
 *	clear mac-address-table - will not use often
 
+
+MODULE 2 LESSON 6
+=================
+
+# Understanding Switch Security
+
+### Threats to Physical Installations
+
+*	Hardware threats
+*	Environmnental threats
+*	Electrical threats
+*	Maintenance threats 
+
+## Setting switch passwords
+
+![Set Passwords](images/switchpasswords.png)
+
+*	line vty 0 4 - 5 virtual teletype lines enabled by default
+*	enable secret - uses md5 hash
+*	enable password - no encryption
+*	service password-encryption - sets level 7 encryption on current and future passwords (weak encryption)
+
+### SSH
+
+	Switch#conf t
+	Switch(config)#username <username> password/secret <password>
+	Switch(config)#ip domain-name <domain name>
+	Switch(config)#crypto key generate rsa
+		How many bits in the modulus [512] <desired bits>
+	Switch(config)#ip ssh version 2
+	Switch(config)#line vty 5 15
+	Switch(config-line)#login local
+	Switch(config-line)#transport input ssh
+
+## Configuring port security
+
+	Switch(config)#interface <interface>
+	Switch(config-if)#switchport mode access
+	Switch(config-if)#switchport port-security
+	Switch(config-if)#switchport port-security maximum 1
+	Switch(config-if)#switchport port-security mac-address sticky
+	Switch(config-if)#switchport port-security violation shutdown
+*Configuration of <interface> to limit and identify MAC addresses of the stations that are allowed to access the port to 1.*
+	
+**Use *do* command to execute user EXEC or privileged EXEC commands from any configuration mode or submode**
+
+	Switch(config-f)#show port-security interface fa 0/5
+	                      ^
+	% Invalid input detected at '^' marker.
+	Switch(config-if)#do show port-security interface fa 0/5
+
+**Other show port-security commands**
+	
+	show port-security address
+	show port-security	
+
+## Securing Unused Ports
+
+*	Unsecured ports can create a security hole
+*	A device that is plugged into an unused port will be added to the network.
+*	Secure unused ports by disabling interfaces
+
+## Interface range
+
+*	to disable interface, use shutdown command in interface configuration mode
+*	to shutdown multiple ports, use interface range command
+	*	Switch(config)#interface range fa 0/1 - 3, fa 0/6 - 8
+*	to restart them use no shutdown
+
+
+MODULE 2 LESSON 7
+=================
+
+# Maximizing the benefits of switching
+
+### Microsegmentation
+
+*	Multiple traffic paths within switch
+*	Happens when you have a point to point connection to a switch
+*	NO HUBS
+
+## Duplex overview
+
+*	Half Duplex
+	*	Unidirectional data flow
+	*	Higher potential for collision
+	*	Hub connectivity
+*	Full Duplex
+	*	Point-to-point only
+	*	Attached to dedicated switched port
+	*	Requires full-duplex support on both ends
+	*	Collision-free
+	*	Collision detect circuit disabled
+	
+### Setting duplex and speed
+
+*	Must be in interface config mode
+*	speed 10 || 100 || 1000 || auto
+*	duplex auto || half || full
+*	**Both sides must have same speed and duplex configurations**
+
+## The Hierarchy of Connectivity
+
+1. Core layer
+	*	Provides optimal transport between core routers and distribution sites
+2.	Distribution layer
+	*	Provides policy-based connectivity, peer reduction, and aggregation
+3.	Access layer
+	*	Provides common group access to the internetworking environment
+	
+## Loops
+*Loops may occur in the network as a part of a design strategy for redundancy.*
+
+### Spanning Tree Protocol
+
+*	1 switch is elected the root based on lowest bridge ID (priority and MAC address concatenated)
+*	A tree-like, loop-free topology is established
+*	One port logically blocks and does not send or receive traffic
+	*	Ports can be marked F or B
+	*	F - included in mac-address table
+	*	B - excluded from mac-address table
+	
+
+MODULE 2 LESSON 8
+=================
+
+# Troubleshooting Interfaces
+
+## Port access issues
+	
+*	Media-related
+*	Duplex-related
+*	Speed-related
+
+### Duplex-related issues
+
+*	One end set to full and other half results in duplex mismatch
+*	One end set to full and other set to auto
+	*	Autonegotiation fails and reverts that end to half
+	*	Results in mismatch
+*	One end set to half and other set to auto
+	*	Autonegotiation fails and reverts that end to half
+	*	Both ends at half duplex - no mismatch 
+	*	half to half operates at 40% efficiency
+
+### Duplex modes
+
+*	Auto on both ends
+	*	one end fails to full, one to half
+	*	Example: Gigabit on one end (not capable of half) and FA on other end
+	
+*	Auto on both ends
+	*	If autonegotiation fails, both revert to half
+	*	no mismatch - better than mismatch
+	
+## Speed-related issues
+
+*	Speed mismatch results in no connectivity
+*	One end 100 other 10 - mismatch
+*	Auto at one end and high speed at other
+	*	If autonegotiation fails, the auto end reverts to lowest supported speed
+	*	results in mismatch
+*	Auto on both ends
+	*	If autonegotiatoin fails, both revert to their lowest speed
+	*	usually no mismatch on auto
+	
+## Media-related issues
+
+*	Damaged wiring
+*	Electromagnetic Interference EMI
+*	Changed traffic patterns
+*	Excede bandwitch of media
+*	New equipment installed, not configured properly
+
+### show interface
+
+![show interface](images/shint.png)
+
+1.	Make sure ethernet is up and line protocol is up (up/up)
+2.	CRC errors - make sure there are no late collisions, could be EMI
+
+    EMI
+ 	Caused when copper runs across items with a lot of electormagnetic output
+	Flourescent lights, modems, etc
+	
+### Excessive collisions
+
+*	show interface determines rate of collisions
+*	TDR(Time Domain Reflectometer) finds ethernet cables not terminated
+*	Look for jabbering transceiver attached to a host.
+	*	May require host by host inspection or the use of a protocol analyzer
+	
+### Late collisions
+
+*	5-4-3 rule
+	*	5 segments
+	*	4 repeaters
+	*	3 segments can have end users
+*	Use protocol analyzer to check for late collisions. 
+	*	Should never occur in a properly designed network
+	*	usually occur when ethernet cables are too long or when too many repeaters
+*	CRC Errors will occur
+*	Duplex-mismatch likely cause
+
+## Configuration Recommended Practices
+1.	Know what you have before you start.
+	*	Hard copy
+	*	Text file
+	*	TFTP server
+2.	Verify changes before you save
+	*	Confirm that issue was corrected and no new issues were created
+3.	**Save current config**
+	*	copy run start
+4.	Secure the configuration
+	*	password on console
+	*	password on vty
+	*	password on EXEC mode
 
 
 
