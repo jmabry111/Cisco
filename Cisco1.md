@@ -1,4 +1,4 @@
-[List](index.html) | [Cisco LAN Switching](Cisco2.md)
+[List](index.html)  |  [Cisco LAN Switching](Cisco2.md)
 
 # Networking Fundamentals and Concepts
 -----------------------------------------

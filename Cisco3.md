@@ -1,4 +1,4 @@
-[Cisco LAN Switching](Cisco2.md) | [List](index.html) | [Router Fundamentals](Cisco4.md)
+[Cisco LAN Switching](Cisco2.md)  |  [List](index.html)  |  [Router Fundamentals](Cisco4.md)
 
 # Wireless LANs
 ---------------
@@ -154,7 +154,7 @@ MODULE 3 LESSON 3
 	*	ESS(Extended Service Set) - 2 or more BSSs are connected by a common distribution system
 	
 ### Data rates and range
-![Data rates & range](images/datareates-range.png)
+![Data rates & range](images/datarates-range.png)
 
 ## AP Configuration
 
