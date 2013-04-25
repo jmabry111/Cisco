@@ -1,4 +1,7 @@
-[Networking Fundamentals and Concepts](Cisco1.md) | [List](index.html) | [Wireless LANs, and Router Fundamentals](Cisco3.md)
+[Networking Fundamentals and Concepts](Cisco1.md) | [List](index.html) | [Wireless LANs](Cisco3.md)
+
+# Cisco LAN Switching
+-----------------------
 
 MODULE 2 LESSON 1
 =================

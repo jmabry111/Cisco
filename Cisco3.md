@@ -1,4 +1,4 @@
-[Cisco LAN Switching](Cisco2.md) | [List](index.html)
+[Cisco LAN Switching](Cisco2.md) | [List](index.html) | [Router Fundamentals](Cisco4.md)
 
 # Wireless LANs
 ---------------
@@ -140,4 +140,83 @@ MODULE 3 LESSON 2
 	*	Encrypted connection between private networks over a public network
 	*	DES, 3DES, AES, SSL
 	
+MODULE 3 LESSON 3
+=================
+
+# Implementing a WLAN
+
+## 802.11 Topology Building Blocks
+
+1.	Ad hoc mode
+	*	IBSS(Independent Basic Service Set) - Mobile clients connect directly without an intermediate AP
+2	Infrastructure mode
+	*	BSS(Basic Service Set) - Mobile clients use a single AP for connecting to each other or to wired network resources
+	*	ESS(Extended Service Set) - 2 or more BSSs are connected by a common distribution system
 	
+### Data rates and range
+![Data rates & range](images/datareates-range.png)
+
+## AP Configuration
+
+1.	Basic parameters:
+	*	IP address, mask, and gateway needed
+	*	Decide on Wireless protocol (g, b/g, a, n, or Mixed Mode)
+	*	Channel (automatic or static)
+	*	Radio power
+2.	Security parameters:
+	*	SSID
+	*	Authentication method - WPA, or WPA2 PSK
+	*	Encryption method - TKIP or AES
+	
+## Steps to implement WLAN
+1.	Verify local wired operation - DHCP & ISP
+2.	Install AP
+3.	Configure AP - SSID, no security (to ensure that clients can connect)
+4.	Connect a client
+5.	Verify WLAN operation
+6.	Configure security - WPA, WPA2
+7.	Verify WLAN operation
+
+### Wireless Clients
+
+*	Wireless Zero Configuration:
+	*	Default on XP or later
+	*	Limited features for basic PSK
+	*	Verify that users have correct encryption type and password
+*	Cisco Compatible Extensions Programs
+	*	Accelerated feature deployment of 3rd party clients
+	*	Wide deployment of various vendors
+*	Cisco Secure Services Client
+	*	Enterprise full-featured wireless client supplicant
+	*	Wired and wireless
+	
+### Common WLAN issues
+
+**Most problems are due to incorrect configuration**
+*	Verify that AP has latest firmware
+*	Verify channel
+*	Verify users have correct encryption and password
+
+*Other common problems*
+*	RF interference
+*	Not connected
+*	Radio disabled on client
+*	Poor antenna location
+
+MODULE 3 LESSON 4
+=================
+
+# VoIP Requirements
+
+**VoiP Phones are connected to network**
+
+	Some wired
+	Some wireless
+
+## Requirements in Network
+
+*	VoIP traffic has special requirements (bandwidth, priority, and small delay)
+*	Use separate VLANs for IP telephony traffic and data traffic to avoid conflict; voice VLAN
+*	Cisco IP phones are often PoE
+*	WLAN design must take into consideration the density and implementation of VoIP devices
+
