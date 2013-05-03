@@ -1,4 +1,4 @@
-[Wireless LANs](Cisco3.md)  |  [List](index.html)  |
+[Wireless LANs](Cisco3.md)  |  [List](index.html)  |  [Router & WAN Config](Cisco5.md)
 
 # Router Fundamentals
 ---------------------
