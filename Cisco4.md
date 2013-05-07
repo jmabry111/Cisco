@@ -262,3 +262,72 @@ MODULE 4 LESSON 5
 
 ![Interface Quiz](images/intquiz.png)
 
+MODULE 4 LESSON 6
+==================
+
+# Exploring Packet Delivery Process
+
+1.	Layer 2 addressing
+	*	MAC addresses are assigned ot hosts and network devices that provide Layer 2 functionality
+	*	Hosts and network devices maintain a MAC address table
+2.	Layer 3 addressing
+	*	Layer 3 addresses are assigned to hosts and network devices that provide Layer 3 functionality
+	*	Network devices maintain a Layer 3 address table (IP)
+	
+## Host to Host Packet Delivery
+
+1.	Initial Phase
+	*	**Application:** Network, I have some data to send to 192.168.4.2 and I don't need a reliable connection
+	*	**Transport:** I'll use UDP. Send me the data.
+	*	**Application:** Here is the data.
+2.	Encapsulation
+	*	**UDP:** I'll put in a UDP header
+	*	**UDP:** IP, send this to 192.168.4.2
+	*	**IP:** I'll put in an IP header
+	*	**IP:** Layer 2, send this to 192.168.4.2
+3.	ARP Resolution Needed
+	*	**Layer 2:** ARP, do you have a MAC address mapping for 192.168.4.2
+	*	**APR:** No, Layer 2 will have to hold the packet while I resolve the addressing.
+4.	Default Gateway MAC Needed
+	*	**ARP:** I am on 192.168.3.0/24 and the destination is on 192.168.4.0/24. I'll have to use the default gateway.
+	*	**ARP:** My default gateway is 192.168.3.2, but I don't have its MAC address, I'll have to resolve the addressing.
+5.	ARP for Default Gateway
+	*	**ARP:** The ARP request will say that I am 192.168.3.1. Are you 192.168.3.2?
+6.	Router Receives ARP
+	*	**Router:** I just received an ARP request. Let me add host 192.168.3.1 to my ARP table with a MAC address of 0800.0222.2222
+7.	Router Issues ARP Response
+	*	**Router:** I'll send and ARP reply that I am 192.168.3.2 with a MAC address of 0800.0333.2222
+8.	Client Recieves ARP Response
+	*	**ARP:** I jsut got an ARP reply from 192.168.3.2. Let me add its IP & MAC to my ARP table.
+	*	**ARP:** Now I ahve a mapping for my default gateway. I can give Layer 2 a mapping for 192.168.4.2
+	*	**ARP:** Layer 2, I have 192.168.4.2 mapped to 0800.0333.2222
+9.	Client Sends Packet to Gateway
+	*	**Layer 2:** Now I can send out that pending frame.
+10.	Routing Needed
+	*	**Router Layer 2:** I received a frame with my MAC address. I need to pass it to Layer 3.
+	*	**Router Layer 3:** This isn't my address. It needs to be routed.
+	*	**Router Layer 3:** I need to forward this packet.
+11.	Routing Table Lookup
+	*	**Router Layer 3:** I have an interface on the 192.168.4.0/24 segment. I can forward this packet directly to the host.
+	*	**Router Layer 3:** Layer 2, send this packet.
+12.	Exit Interface Determined
+	*	**Router Layer 3:** I have an interface on the 192.168.4.0/24 segment. I can forward this packet directly to the host.
+	*	**Router Layer 3:** Layer 2, send this packet.
+13.	Router ARPs for Destination MAC Address
+	*	**ARP:** The ARP request will say that I am 192.168.4.1, are you 192.168.4.2?
+14.	Client Receives ARP
+	*	**Client:** I just received an ARP request. Let me add host 192.168.4.1 to my ARP table with a MAC address of 0800.0333.2222
+15.	ARP Response Issued
+	*	**Client:** I'll send and ARP reply that I am 192.168.4.2 with a MAC address of 0800.0222.1111
+16.	ARP Response Received
+	*	**Router ARP:** I jsut got an ARP reply from 192.168.4.2. Let me add its IP & MAC to my ARP table.
+	*	**Router ARP:** Now I ahve a mapping. I can give Layer 2 a mapping for 192.168.4.2
+	*	**Router ARP:** Layer 2, I have 192.168.4.2 mapped to 0800.0222.1111
+17.	Router Sends to Destination
+	*	**Router Layer 2:** I can send out that pending packet.
+	
+MODULE 4 LESSON 7
+==================
+
+# Cisco Router Security
+
