@@ -331,3 +331,156 @@ MODULE 4 LESSON 7
 
 # Cisco Router Security
 
+### Threats
+*	Hardware
+*	Environmental
+*	Electrical
+*	Maintenance
+
+## Passwords
+
+1.	login
+	*	Force line (vty, console) to ask for a password
+	
+2.	Set Console password
+	
+	*line console 0*
+	*login*
+	*password cisco*
+	
+3.	Set Virtual Terminal Password
+	
+	*line vty 0 4*
+	*login*
+	*password cisco*
+	
+4.	Set Enable Password (in the clear unless service password-encryption is used)
+	
+	*enable password cisco*
+	
+5.	Set Enable Secret (uses md5 hash of password)
+
+	*enable secret cisco*
+	
+6.	Set Service Password Encryption (uses Level 7 -weak- encryption)
+	
+	*service password-encryption*
+	*no service password-encryption*
+
+### AutoSecure
+*	AutoSecure command initiates a security audit then allows for config changes
+*	AutoSecure first makes recommendations for fixing security vulnerabilities adn them modifies the security config of router
+*	AutoSecure attempts to ensure maximum security by disabling the services most commonly used by hackers to attack a router
+
+### MOTD & Login Banner
+**Login**
+*	Define and enable a customized message to be displayed before username and password login prompts
+**MOTD**
+*	Define and enable customized message to be displayed after login
+
+## Telnet vs. SSH
+*	Telnet
+	*	Most common access method
+	*	**UNSECURE**
+*	SSH
+	*	Encrypted
+	*	IP domain must be defined
+	*	Key must be generated on Cisco device
+	*	Telnet access must be disabled for better security	
+*	![SSH Configuration](images/sshconfig.png)
+
+
+MODULE 4 LESSON 8
+==================
+
+# Cisco Security Device Manager - SDM
+
+**SDM is a Java-based web interface for the management of routers**
+
+## SDM
+*	Embedded we-based management tool
+*	Provides intelligent wizards to enable quicker and easier deployments, and does not require knowledge of Cisco IOS CLI or security expertise
+*	Tools for more advanced users:
+	*	ACL editor
+	*	VPN cryptography map editor
+	*	Cisco CLI preview
+*	Supported on a number of Cisco platforms and releases
+*	Always verify SDM router and Software release support at [sdm](www.cisco.com/go/sdm)
+
+## Cisco Configuration Professional
+*	Alternative GUI to SDM to manage Cisco devices
+*	[CCP](www.cisco.com/go/ciscocp)
+
+### Configuration to support SDM
+*	Enable http and https on router
+*	create a user account with privilege level 15
+*	Configure ssh and telnet for local login and privilege level 15
+
+	Router(config)#ip http server
+	Router(config)#ip http secure-server
+	Router(config)#username cisco password cisco
+	Router(config)#username cisco privilege 15
+	Router(config-line)#login local
+	Router(config-line)#transport input ssh telnet
+
+### SDM Wizards
+*	Interfaces and connections:
+	*	Configure WAN interfaces for PPP, Frame Relay, or HDLC, and configure LAN interfaces, along w/ DHCP services
+*	Firewall:
+	*	Configure firewall features
+*	VPN:
+	*	Configure VPN features
+*	Security audit:
+	*	Perform a router security audit, with a button for router lockdown
+*	IPS:
+	*	Intrusion Protection System
+*	QoS:
+	*	Quality of Service
+	
+
+MODULE 4 LESSON 9
+==================
+
+# DHCP Server
+
+**All Cisco IOS releases have full DHCP capabilities**
+
+	Router(config)#ip dhcp excluded-address 10.10.10.0 10.10.10.99
+	Router(config)#ip dhcp pool <name_of_dhcp_pool>
+	Router(dhcp-config)#network 10.10.10.0 mask - (/24or 255.255.255.0)
+	Router(dhcp-config)#domain-name domain.com
+	Router(dhcp-config)#import all
+	Router(dhcp-config)#default-router 10.10.10.1
+	Router(dhcp-config)#dns-server 8.8.8.8 8.8.4.4
+	Router(dhcp-config)#lease d h m
+	Router(dhcp-config)#exit
+	Router(config)#exit
+	Router#debug dhcp binding - shows any clients that were given IP addresses
+	Router#show ip dhcp conflict
+
+
+MODULE 4 LESSON 10
+==================
+
+# Remote Access
+
+### Viewing Telnet Connections
+*	show session (shortcut w)
+	*	displays information about Telnet connections originated from router/switch you are currently on
+*	show users
+	*	displays information about the active lines on router/switch you are currently on
+*	show ssh
+	*	displays status of ssh connections
+
+
+### Suspending & Resuming Telnet
+
+*	Suspend session - <cntrl + shift + 6>x
+*	Resume - resume
+*	Disconnect - resume and exit or just type disconnect (if there's only 1 session) disconnect <session #> (if there are more than one sessions)
+*	Boot someone off - clear line <line #>
+	
+### Ping and Traceroute
+
+*	![Responses](images/pingresponse.png)
+
