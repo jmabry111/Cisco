@@ -1,4 +1,4 @@
-[Router Fundamentals](Cisco4.md)  |  [List](index.html)  |
+[Router Fundamentals](Cisco4.md)  |  [List](index.html)  | [Network Management Operations](Cisco6.md)
 
 # WAN Connections
 ------------------
@@ -342,7 +342,7 @@ MODULE 5 LESSON 3
 **PPP Configuration Example**
 ![pppconfig](images/pppconfig.png)
 
-### verify PPP on serial
+### Verify PPP on Serial
 
 	RouterA#sh int serial 0/0/0
 	Serial0/0/0 is up, line protocol is up (connected)
@@ -364,5 +364,151 @@ MODULE 5 LESSON 3
 			...
 
 
+MODULE 5 LESSON 4
+===================
 # Enabling Static Routing
+
+## Router Operations
+
+**To be able to route, a router must do the following:**
+
+*	Know the destination address
+*	Identify the sources from which the router can learn
+*	Discover possible routes to the intended destinatino
+*	Select the best route
+*	Maintain and verify routing information
+*	Learn destinations that are not directly connected
+	*	The routing table is used to determine the best path to the destination
+
+## Identifying Static & Dynamic Routes
+
+|	Static									|	Dynamic																					|
+|-------------------------------------------|:-----------------------------------------------------------------------------------------:|
+|	Uses manually entered route				|Uses routes that routing protocol adjusts automatically for topology or traffic changes	|
+|	Topology change requires manual update	|Router learns & maintains routes by exchanging routing updates								|
+|	Allows precise control over routing		|Routers are able to discover new networks by sharing routing table info					|
+
+![static](images/staticrouting.png)
+
+### Advantages of static routing
+*	Stub networks
+*	Security
+*	Lower overhead
+
+## Static Routing
+*	Configure unidirectional static routes to and from a stub network to allow communicatinos to occur
+![Stub Network](images/stubnetwork.png)
+
+### Static Route syntax
+
+*	ip route ?
+	*	network 	- destination network or subnet
+	*	[mask]		- subnet mask
+	*	{address	- IP address of next-hop router
+	*	interface}	- Name of interface to use to get to destination network
+	*	[distance]	- Defines administrative distance
+	*	[permanent]	- Specifies that the route will not be removed even if the interface shuts down
+
+### Static Route Configuration
+*From diagram above*
+
+*	Define a path to an IP destination network (172.16.1.0 255.255.255.0)
+	*	could also define path to subnet or host
+*	Use IP address of the next-hop router (172.168.2.1)
+*	Or use outbound interface of the local router (serial 0/0/0)
+
+*Syntax: RouterA(config)ip route {destination network ip} {destination mask} {next-hop router}*
+*Example: RouterA(config)ip route 172.16.1.0 255.255.255.0 172.16.2.1*
+*Example: RouterA(config)ip route 172.16.1.0 255.255.255.0 serial 0/0/0*
+
+### Verifying Static Routes in Routing Table
+*	Examine the routing table with the *show ip route* command
+	*	Includes network address and subnet mask as well as ip address of next-hop router or exit interface
+	*	Denoted with code **S** in the routing table
+	*	Routing tables must contain directly connected networks that are used to connect remote networks before static or 
+	dynamic routing can be used
+	*	Default route denoted by an *
+
+### Default Static Route
+	RouterA(config)#ip route 0.0.0.0 0.0.0.0 <next-hop ip address or interface on local router>
+
+
+MODULE 5 LESSON 5
+===================
+
+# Enabling RIP
+
+## What is a Routing Protocol?
+*	Routing protocols are used between routers to determine paths and to maintain routing tables
+*	After the path is determined, a router can route a routed protocol
+	*	Routed Protocols - IPv4, IPv6
+	*	Routing Protocols- RIP, EIGRP
+	
+### Purpose of a Dynamic Routing Protocol
+*	Discovery of remote networks
+*	Maintaining up-to-date routing information
+*	Choosing the best path to destination networks
+*	Ability to find a new best path if the current path is no longer available
+
+### Autonomous Systems: Interior and Exterior Routing Protocols
+*	An autonomous system is a collectino of networks within a common administrative domain
+*	Interior Gateway Protocols (IGP) operate within an autonomous system
+*	Exterior Gateway Protocols (EGP) connect different autonomous systems
+
+	RIP 	- Routing Information Protocol
+	EIGRP	- Enhanced Interior Gateway Routing Protocol
+	OSPF	- Open Shortest Path First
+	IS-IS	- Intermediate System to Intermediate System
+	BGP		- Border Gateway Protocol
+
+|	IGP	|	EGP	|
+|-------|:-----:|
+|RIPv2	|BGP	|
+|EIGRP	|		|
+|OSPF	|		|
+|IS-IS	|		|
+
+### Classes of Routing Protocols
+*	Distance Vector
+	*	RIP
+	*	RIPv2
+*	Advanced Distance Vector/Hybrid
+	*	EIGRP
+*	Link State
+	*	OSPF
+	*	IS-IS
+
+### Routing Decisions
+*	Routers may have multiple sources indicating how to reach the same direction
+*	A routing table may only possess one source per destination network
+*	Therefore, routers must choose the optimal routing source
+*	Administrative distance is the mechanism by which routers identify the trustworthiness or believability of a route
+![AD](images/administrativedistance.png)
+
+
+### Classful Routing Protocol *Bad Idea*
+*	Classful routing protocols do not include the subnet mask with the route advertisement
+*	Within the same network, consistency of the subnet masks is assumed. Fixed length subnet masking required when using Classful routing 
+protocols
+*	Summary routes are exchanged between foreign networks
+*	RIPv1 is a classful protocol
+	
+### Classless Routing Protocols *Less is More*
+*	Classless routing protocols include the mask with the route advertisement
+*	Classless routing protocols support a variable-length subnet mask (VLSM)
+*	Summary routes can be manually controlled within the network
+*	Examples of classless RPs:
+	*	RIPv2
+	*	EIGRP
+	*	OSPF
+	*	IS-IS
+	*	BGP
+	
+### Distance Vector Protocols
+*	Routers pass periodic copies of their routing table to neighboring routers and accumulate distance vectors
+*	![Distance Vector](images/dvrp.png)
+
+### Sources of Information and Discovering Routes
+*	Routers discover the best path to destinations from each neighbors
+*	Each router maintains its own routing table
 
