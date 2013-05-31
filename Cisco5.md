@@ -509,6 +509,54 @@ protocols
 *	![Distance Vector](images/dvrp.png)
 
 ### Sources of Information and Discovering Routes
-*	Routers discover the best path to destinations from each neighbors
+*	Routers discover the best path to destinations from each neighbors routing table
 *	Each router maintains its own routing table
+
+### RIP
+*	Hop-count metric selects path
+*	Routing updates broadcast every 30 seconds
+*	Capable of load balancing up to 16 equal cost paths (default = 4)
+*	Does not take into account speed/bandwidth **at all**
+*	![RIPv1 vs. RIPv2](images/ripcomparison.png)
+
+## IP Routing Configuration Tasks
+
+*	Router configuration
+	*	Select routing protocols
+	*	Specify networks or interfaces
+	*	using network command
+	*	**network command enables routing protocol for a specified network**
+
+### RIP Configuration
+
+	Router(config)#router rip					# Start RIP routing process
+	Router(config-router)#version 2 			# Enable RIPv2
+	Router(config-router)#no auto-summary		# 
+	Router(config-router)#network 10.0.0.0		# Enable RIP on all interfaces that belong to 10.0.0.0 network
+	Router(config-router)#network 172.16.0.0	# Enable RIP on all interfaces that belong to 172.16.0.0 network
+												# Requires a major classful network number
+![RIP example](images/ripexample.png)
+
+### Verify RIP Config
+
+	Router#show ip protocols
+	Routing protocol is "rip"
+	Sending updates every 30 seconds, next due in 15 seconds
+	Invalid after 180 seconds, hold down 180, flushed after 240
+	...
+	Routing for networks
+	10.0.0.0
+	172.16.0.0
+	Passive Interface(s):
+	Routing Information Sources:
+	Gateway			Distance		Last Update
+	10.1.1.2			120			00:00:16
+	...
+
+	Router#show ip route
+	Codes: ... R - RIP ...
+	...
+	R		10.2.2.0	[120/1]	via 10.1.1.2, 00:00:19, Serial0/0/2
+		172.16.0.0/24 is subnetted, 1 subnets
+	R		192.168.1.0/24	[120/2]	via 10.1.1.2, 00:00:19, Serial0/0/2
 
