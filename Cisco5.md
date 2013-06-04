@@ -1,4 +1,4 @@
-[Router Fundamentals](Cisco4.md)  |  [List](index.html)  | [Network Management Operations](Cisco6.md)
+[Router Fundamentals](Cisco4.md)  |  [List](index.html)  | [Network Environment Management](Cisco6.md)
 
 # WAN Connections
 ------------------
@@ -560,3 +560,22 @@ protocols
 		172.16.0.0/24 is subnetted, 1 subnets
 	R		192.168.1.0/24	[120/2]	via 10.1.1.2, 00:00:19, Serial0/0/2
 
+## Lesson 5 Summary
+*	The purposes of dynamic routing protocols:
+	*	Discovery of remote networks
+	*	Maintaining up to date routing information
+	*	Choosing the best path to destination networks
+	*	Ability to find a new best path if current path is no longer available
+*	Classful routing protocols do not send subnet mask information in routing updates. Classless routing protocols include mask with network address in routing updates
+*	The periodic routing updates that most distance vector routing protocols generate are addressed only to directly connected routing devices.
+*	RIP is a distance vector routing protocol that uses hop count as the metric for determining route selection and broadcasts updates every 30 seconds
+*	RIPv1 uses a classful routing protocol, and RIPv2 uses a classless routing protocol.
+	*	RIPv2 supports VLSM, manual route summarization, and authentication, while RIPv1 does not support these activities
+*	To enable dynamic routing protocols:
+	1.	A routing protocol is selected
+	2. 	IP network nubers are assigned withoug values being specified (except for OSPF)
+	3.	The **router** command starts the routing process
+	4. 	The **network** command allows the routing process to determine which interfaces will participate in sending and receiving the routing updates
+*	The **router rip** command selects RIP as the routing protocol. The **network** command identifies a participating attached network
+*	The **show ip protocols** command displays information about routing protocols and the **show ip route** command displays the routing table
+*	The **debug ip rip** command displays information about RIP routing transactions
