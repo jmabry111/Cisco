@@ -1,4 +1,4 @@
-[Cisco LAN Switching](Cisco2.md)  |  [List](index.html)  |  [Router Fundamentals](Cisco4.md)
+[Cisco LAN Switching](Cisco2.md)  |  [Home](index.html)  |  [Router Fundamentals](Cisco4.md)
 
 # Wireless LANs
 ---------------

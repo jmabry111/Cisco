@@ -1,4 +1,4 @@
-[List](index.html)  |  [Cisco LAN Switching](Cisco2.md)
+[Home](index.html)  |  [Cisco LAN Switching](Cisco2.md)
 
 # Networking Fundamentals and Concepts
 -----------------------------------------
@@ -373,7 +373,7 @@ MODULE 1 LESSON 5
 
 ## Passing Transport to Application layer
 *	![Transport to Application](images/application-port-layer.png)
-*	[Common port numbers](http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
+*	[Common port numbers](http://en.wikipedia.org/wiki/Home_of_TCP_and_UDP_port_numbers)
 
 ## TCP Connection
 *	3-way handshake

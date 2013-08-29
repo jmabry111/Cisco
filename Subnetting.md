@@ -1,4 +1,4 @@
-[List](index.html)
+[Home](index.html)
 
 # Subnetting
 -------------
