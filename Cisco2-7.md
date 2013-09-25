@@ -132,3 +132,61 @@ MODULE 7 LESSON 2
 	*	4 billion addresses
 *	IPv6 Address is 128 bits
 	*	3.4 x 10<sup>38</sup> addresses
+
+## IPv6 Advanced Features
+*	Larger address space
+	*	Global reachability and flexibility
+	*	Aggregation
+	*	Multihoming
+	*	Autoconfiguration
+	*	Plug-and-play
+	*	End to end without NAT
+	*	Renumbering
+*	Mobility and Security
+	*	Mobile IP RFC-compliant
+	*	IPsec mandatory (or native) 
+*	Simpler header
+	*	Routing efficiency
+	*	Performance and forwarding rate
+	*	No broadcasts
+	*	No checksums
+	*	Extension headers
+	*	Flow labels
+*	Transition richness
+	*	Dual Stack
+	*	Translation
+
+### IPv6 Representation
+*	Format:
+	*	x:x:x:x:x:x:x:x, where x is a 16bit hexadecimal field
+		*	Case-insensitive for hex letters
+	*	Leading zeros in a field are optional
+	*	Successive fields of zeros can be represented as :: only once per address
+
+### Address types
+*	Unicast:
+	*	Address is for a single interface
+	*	IPv6 has several types (global, reserved, link-local, site-local)
+*	Multicast
+	*	one to many
+	*	enables more efficient use of the network
+	*	uses a larger address range
+*	Anycast
+	*	One-to-nearest (allocated from unicast address space)
+	*	Multiple devices share the same address
+	*	All anycast nodes should provide uniform service
+	*	Source devices send packets to anycast address
+	*	Routers decide on closest device to reach the destination
+	*	Suitable for load balancing and content delivery service
+
+## Unicast Addressing
+*	Types of IPv6 unicast addresses:
+	*	Global: Starts with 2000::/3 and assigned by IANA
+	*	Reserved: Used by IETF
+	*	Private: Link local (starts with FE80::/10) (not routable)
+	*	Loopback (::1)
+	*	Unspecified (::)
+*	A single interface will be assigned multiple IPv6 addresses of any type: unicast, anycast, or multicast
+	*	Automatic, static assignment
+*	IPv6 addressing rules are covered by multiple RFCs
+	*	Architecture defined by RFC 4291
