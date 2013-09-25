@@ -122,3 +122,13 @@ MODULE 7 LESSON 1
 	*	That all necessary routers have a return route back to the translated address
 
 ![nat problem](images/natproblem.gif)
+
+MODULE 7 LESSON 2
+===================
+
+# IPv6
+
+*	IPv4 Address is 32 bits
+	*	4 billion addresses
+*	IPv6 Address is 128 bits
+	*	3.4 x 10<sup>38</sup> addresses
