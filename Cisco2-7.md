@@ -190,3 +190,32 @@ MODULE 7 LESSON 2
 	*	Automatic, static assignment
 *	IPv6 addressing rules are covered by multiple RFCs
 	*	Architecture defined by RFC 4291
+	
+### IPv6 breakdown
+![breakdown](images/ipv6breakdown.png)
+
+### Link-Local address
+*	Dynamically created on all IPv6 interfaces by using FE80::/10 and a 64 bit interface identifier
+*	Used for automatic address configuration, neighbor discovery, and router discovery
+*	Can serve as a way to connect devices on the same local network without needing global addresses
+*	When communicating with a link-local address, you must specify the outgoing interface, because every interface is connected to FE80::/10
+
+### Larger address space enables address aggregation
+*	Address Aggregation provides the following benefits
+	*	Aggregation of prefixes announced in the global routing table
+	*	Efficient and scalable routing
+	*	Improved bandwidth and functionality
+
+### Assigning IPv6 Global Unicast Addresses
+*	Static assignment
+	*	Manual interface ID assignment
+	*	EUI-64 interface ID assignment
+*	Dynamic assignment
+*	Stateless assignment
+	*	DHCPv6
+
+###	IPv6 Interface Identifier
+*	Cisco can use the EUI-64 format for interface identifiers
+*	This format expands the 48-bit mac address to 64 bits by inserting FFFE into the middle 16 bits
+*	To make sure that the chosen address is from a unique Ethernet mac address, the U/L bit is set to 1 for global scope (0 for local scope)
+
