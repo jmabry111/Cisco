@@ -1,4 +1,4 @@
-[Dynamic Routing - EIGRP](Cisco2-5.md) |	[Home](index.html)
+[Dynamic Routing - EIGRP](Cisco2-5.md)		|		[Home](index.html)		|		[NAT & PAT](Cisco2-7.md)
 
 MODULE 6 LESSON 1
 =================
@@ -186,3 +186,65 @@ MODULE 6 LESSON 2
 
 # Extended ACLs
 ![eACL](images/extendedaclpacket.png)
+
+###	Numbered Extended IPv4 ACL Configuration
+*	![syntax](images/exaclsyntax.png)
+*	Extended ACL config uses 100 to 199, or 2000 to 2699, for the ACL number
+*	Statement matches any source address that starts with 172.16.4.x
+*	Statement matches any destination
+*	TCP or UDP port number (or service) placed at the end of the exteded ACL statement
+	*	Logical operations: equal (eq), not equal (neq), greater than (gt), less than (lt)
+	*	23 - telnet, 21 - ftp-control, 20 - ftp-data
+*	To activated the interface as an outbound filter:
+	*	RouterX(config-if)#ip access-group 101 out
+
+### Example 1
+*	Deny FTP traffic from subnet 172.16.4.0 to subnet 172.16.3.0 out E0
+*	Permit all other traffic
+*	Implicity deny all - not visible in the list
+	*	Router(config)#access-list 101 deny tcp 172.16.4.0 0.0.0.255 any eq 21
+	*	Router(config)#access-list 101 permit ip any any
+	*	Router(config-if)#int E0
+	*	Router(config-if)#ip access-group 101 out
+
+### Example 2
+*	Deny Telnet traffic from subnet 172.16.4.0 to subnet 172.16.3.0 out E0
+*	Permit all other traffic
+*	Implicity deny all - not visible in the list
+	*	Router(config)#access-list 101 deny tcp 172.16.4.0 0.0.0.255 any eq 23
+	*	Router(config)#access-list 101 permit ip any any
+	*	Router(config-if)#int E0
+	*	Router(config-if)#ip access-group 101 out
+
+## Named IP ACL Configuration
+![named](images/namedacl.png)
+
+*	Named ACLs are easier to edit than numbered ACLs
+	*	Router(config)#ip access-list {standard | extended} name
+	*	Router(config-std-nacl)#sequence number statement (15 deny host 172.16.4.14)
+	*	Router(config-std-nacl)#end
+*	Add remarks to help later on down the road!
+	*	Router(config)#ip access-list extended BLOCK_USER
+	*	Router(config-std-nacl)#remark This ACL blocks user
+	*	Router(config-std-nacl)#end
+	*	**OR**
+	*	Router(config)#access-list BLOCK_User remark This ACL blocks user
+
+### ACL Best Practices
+*	When adding a new ACL, check for existing ACL first
+*	Do not apply empty or nonexisting ACLs ot the interface
+	*	Has no effect on traffic and is bad practice
+	*	The ACL may inadvertently be applied to an interface
+*	Base your ACLs on security policy of the organization
+*	Prepare a description of what you want you ACLs to do
+*	Test your ACLs on a development network before implementing on production network
+*	Use text editor to create, edit, and save ACLs
+
+### Monitor ACL Statements
+*	*show access-lists*
+	*	You can copy and paste output of this command for configuring/backup of lists
+
+### Verify ACLs
+*	*show ip interfaces e0*
+	*	Outgoing access list is NAME
+	*	Inbound access list is 12
