@@ -1,4 +1,4 @@
-[VLANs](Cisco2-1.md)  |	[Home](index.html)  |  [?](Cisco2-3.md)
+[VLANs](Cisco2-1.md)  |	[Home](index.html)  |  [Routing](Cisco2-3.md)
 
 
 MODULE 2 LESSON 1
@@ -231,4 +231,48 @@ MODULE 2 LESSON 1
 
 # Troubleshooting
 -------------------
+
+### General Guidelines
+*	Become familiar with normal switch operatin
+*	Have an accurate physical and logical map of the network
+*	Have a plan
+*	DO NOT assume that it's working, VERIFY IT.
+*	Correct cable type, category, length
+	*	Cat5 for 100Mb/s
+	*	Cat5e/6 for 1Gb/s
+	*	Straight-through for unlike devices
+	*	Crossover for like devices
+	*	Max distance for copper Ethernet is 100meters
+*	Cable plugged into right port
+*	Make sure ports are up and not administratively down or in err state
+*	Make sure duplex and speed are not mismatched
+
+### VLANs and Trunks
+*	Make sure local and peer VLANs match
+*	Make sure local and peer trunk *modes* match - not auto-auto
+*	Make sure VLAN corresponds with a unique IP Subnet
+*	Does inter-VLAN traffic have a functional layer-3 process
+	*	Make sure one VLAN has route to other
+
+### VTP
+*	Can you see VLAN deteails in the *show vlan* commmand output
+*	Do switches exchange VTP info.
+*	Does an inserted switch cause network problems?
+	*	Make sure you didnt insert switch with higher revision numnber
+*	Are all ports inactive after power cycle?
+	1.	Temporarilly change VTP to transparent
+	2.	Add VLAN to which the uplink port is assigned to the VLAN database
+	3.	Change VTP mode back to client after the uplink port begins fowarding.
+	
+### Spanning-Tree
+*	Verify STP port states to id root and blocked ports
+	*	*show spanning-tree* - look for oddities
+*	Identify bridging loop and restore connectivity quickly
+	*	unplug redundant link to remove loop (worst case scenario)
+*	Check STP log events
+	*	Use privileged exec command *debug spanning-tree events* to enable STP debug info.
+	*	Use global config command *logging buffered* to capture this debug info in the device buffers
+	*	Send debug output to syslog device.
+*	Verify root bridge selection and that RSTP is enabled.
+
 
